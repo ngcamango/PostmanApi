@@ -1,0 +1,50 @@
+{
+	"info": {
+		"_postman_id": "e0cfdec6-19ff-4301-91e6-943024dfddb9",
+		"name": "New",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "PostUserIDCheck",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2f9e89bb-b141-49c4-98e0-181f9ad59de5",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"User ID is 1 -> \" +jsonData[0].userId] = jsonData[0].userId === 1;",
+							"",
+							"tests[\"Response time is less than 200ms\"] = responseTime < 200;",
+							"",
+							"tests[\"Successful POST request\"] = responseCode.code === 200 || responseCode.code === 202;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://jsonplaceholder.typicode.com/posts",
+					"protocol": "http",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

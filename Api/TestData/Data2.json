@@ -1,0 +1,12 @@
+[
+  {
+    "endpoint": "api/register/preprod",
+    "email": "abc@gmail.com",
+    "password": 123
+  },
+  {
+    "endpoint": "api/register/preprod",
+    "email": "def@gmail.com",
+    "password": 456
+  }
+]

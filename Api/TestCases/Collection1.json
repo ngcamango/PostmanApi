@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "6e4f5222-709e-473e-b22c-b4d20e677cf9",
+		"name": "Collection1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET",
+			"item": [
+				{
+					"name": "GetUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "82776cdb-aad7-4c90-90e4-5c4fa67392fb",
+								"exec": [
+									"console.log(\"Hello World\")",
+									"",
+									"let urlVar = pm.variables.get(\"url\")",
+									"console.log(\"Value for url variable is: \" +urlVar)",
+									"",
+									"pm.variables.set(\"name\", \"POSTMAN\")",
+									"",
+									"console.log(pm.variables.get(\"name\"))",
+									"",
+									"let globalVar = pm.globals.get(\"Env\");",
+									"",
+									"console.log(globalVar)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "3838dbff-b377-43fd-9e91-bb782fef54ca",
+								"exec": [
+									"console.log(\"I am in Pre-request script section\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/users/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUserList",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1192fefd-29cd-460d-a798-cea00c0e893b",
+								"exec": [
+									"pm.test(\"Verify response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"pm.test(\"Verify status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/users?page=2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "POST",
+			"item": [
+				{
+					"name": "UserRegistration",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\"\r\n}"
+						},
+						"url": {
+							"raw": "https://reqres.in/{{endpoint}}",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"{{endpoint}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "f2ca16e6-21cf-47d8-95a4-38aad7e95a17",
+				"type": "text/javascript",
+				"exec": [
+					"console.log(\"Hello World\")",
+					"",
+					"let urlVar = pm.variables.get(\"url\")",
+					"console.log(\"Value for url variable is: \" +urlVar)",
+					"",
+					"pm.variables.set(\"name\", \"POSTMAN\")",
+					"",
+					"console.log(pm.variables.get(\"name\"))",
+					"",
+					"let globalVar = pm.globals.get(\"Env\");",
+					"",
+					"console.log(globalVar)"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "99f90679-3bfc-41be-b7f3-fb60177d89b0",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "f0ce6e24-c6bd-4cdc-bc9d-30acd737245d",
+			"key": "url",
+			"value": "https://reqres.in",
+			"type": "string"
+		}
+	]
+}

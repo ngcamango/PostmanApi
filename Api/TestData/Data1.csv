@@ -1,0 +1,3 @@
+endpoint,email,password
+api/register/preprod,sydney@fife,pistol
+api/register/preprod,mango@mango,automation
